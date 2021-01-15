@@ -7,10 +7,9 @@ from cx_Freeze import setup, Executable
 include_files = []
 # Note: without 'jinja2.ext' in this list, we won't get the templates working. 
 
-include = [ 'jinja2', 'jinja2.ext',]
-#include =[]
-flaskapp = Executable('app.py')
-
+#include = [ 'jinja2', 'jinja2.ext',]
+include =['win32timezone']
+flaskapp = Executable('win32_service.py',base='Console') #is not working with'Win32Service 
                   
 setup(
     name="Flask-App-Test-cx-freeze",
