@@ -1,13 +1,15 @@
 
 *.pyc
 *.zip
-build/win32_service/EXE-00.toc
+*dll
 *.pkg
 *.toc
-*.txt
 *.manifest
 *.html
 *.pyz
 .vscode/settings.json
 *.log
+*pyd
+*whl
+*lib
 *.exe
