@@ -32,7 +32,7 @@ pip whell install cx_Logging-2.2-cp38-cp38-win_amd64.whl
 ```
 
 # OPTION 1: Compile the application as window service executable
-The following commannd will generate a .exe in  buils directory
+The following commannd will generate a .exe in  build  directory
 ```sh
 python setup.py build
 ```
@@ -44,7 +44,8 @@ cd build\exe.win-amd64-3.8\
 ```
 
 # OPTION 2: Compile the application as window console executable
-The following commannd will generate a .exe in  buils directory
+The following commannd will generate a .exe in  build directory
+## Is working 
 ```sh
 python setup_console.py build
 ```
