@@ -9,7 +9,7 @@ include_files = []
 
 #include = [ 'jinja2', 'jinja2.ext',]
 include =['win32timezone']
-flaskapp = Executable('win32_service.py',base='Console') #is not working with'Win32Service 
+flaskapp = Executable('ServiceHandler.py',base='Console') #is not working with'Win32Service 
                        
                   
 setup(

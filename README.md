@@ -1,5 +1,5 @@
-# python-flask-as-window-service
-These are the steps to create a flask applications as window services in windows 10 and python 3.8
+# python-flask-as-window-service using pyinstaller
+These are the steps to create a flask applications as window services in windows 10 and python 3.8 uning pyinstaller
 
 Based on [https://stackoverflow.com/questions/55677165/python-flask-as-windows-service]
 

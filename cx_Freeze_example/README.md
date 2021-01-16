@@ -31,15 +31,27 @@ or
 pip whell install cx_Logging-2.2-cp38-cp38-win_amd64.whl
 ```
 
-# Compile the application as window execuatble
+# OPTION 1: Compile the application as window service executable
 The following commannd will generate a .exe in  buils directory
 ```sh
 python setup.py build
 ```
 
-# Test the .exe  
+## Test the .exe  
 ```sh
 cd build\exe.win-amd64-3.8\
+.\cx_Freeze_Flask_Service.exe debug
+```
+
+# OPTION 2: Compile the application as window console executable
+The following commannd will generate a .exe in  buils directory
+```sh
+python setup_console.py build
+```
+
+## Test the .exe  
+```sh
+cd build\win32_service.exe
 .\cx_Freeze_Flask_Service.exe debug
 ```
 
