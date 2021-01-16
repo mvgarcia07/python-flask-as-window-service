@@ -13,3 +13,4 @@
 *whl
 *lib
 *.exe
+*venv
