@@ -52,7 +52,6 @@ or to uninstall
 ## Test the .exe  
 Check in browser http://localhost:5000/ to find the "hellow world" 
 
-<<<<<<< HEAD
 ## Start the application Manually
 Now, open the “Services” msc snap in
 ```sh
