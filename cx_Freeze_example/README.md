@@ -31,7 +31,7 @@ or
 pip whell install cx_Logging-2.2-cp38-cp38-win_amd64.whl
 ```
 
-<<<<<<< HEAD
+
 # OPTION 1: Compile the application as window service executable 
 The following commannd will generate a .exe in  'build' directory
 
