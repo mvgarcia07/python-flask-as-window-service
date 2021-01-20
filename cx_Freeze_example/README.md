@@ -31,9 +31,10 @@ or
 pip whell install cx_Logging-2.2-cp38-cp38-win_amd64.whl
 ```
 
+<<<<<<< HEAD
 # OPTION 1: Compile the application as window service executable 
-
 The following commannd will generate a .exe in  'build' directory
+
 ```sh
 python setup.py build
 ```
@@ -51,6 +52,7 @@ or to uninstall
 ## Test the .exe  
 Check in browser http://localhost:5000/ to find the "hellow world" 
 
+<<<<<<< HEAD
 ## Start the application Manually
 Now, open the “Services” msc snap in
 ```sh
@@ -73,6 +75,7 @@ stdout.log
 
 # OPTION 2: Compile the application as window console executable using win32
 The following commannd will generate a .exe in  build directory
+
 ```sh
 python setup_console.py build
 ```
