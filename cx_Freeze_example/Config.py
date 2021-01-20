@@ -36,10 +36,10 @@
 #       parameters sessionId and eventTypeId.
 # ------------------------------------------------------------------------------
 
-NAME = "cx_FreezeSampleService%s"
-DISPLAY_NAME = "cx_Freeze Sample Service - %s"
+NAME = "FlaskService%s"
+DISPLAY_NAME = "Flask and cx_Freeze Sample Service - %s"
 MODULE_NAME = "ServiceHandler"
-CLASS_NAME = "HelloFlaskSvc"
+CLASS_NAME = "Handler"
 DESCRIPTION = "Sample service description"
-AUTO_START = False
+AUTO_START = True
 SESSION_CHANGES = False

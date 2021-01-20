@@ -22,14 +22,14 @@ executables = [
     Executable(
         "Config.py",
         base="Win32Service",
-        target_name="cx_Freeze_Flask_Service.exe",
+        target_name="FlaskService.exe",
     )
 ]
 
 setup(
-    name="cx_Freeze_Flask_Service",
+    name="FlaskService",
     version="0.1",
-    description="Sample cx_Freeze Windows serice",
+    description="Sample cx_Freeze Windows service",
     executables=executables,
     options=options,
 )

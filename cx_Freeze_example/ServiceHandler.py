@@ -1,58 +1,44 @@
-import win32serviceutil
-import win32service
-import win32event
-import win32evtlogutil
-import servicemanager
-import socket
-import time
-import logging
+  
+"""
+Implements a simple service using cx_Freeze.
+See below for more information on what methods must be implemented and how they
+are called.
+"""
+
+import threading
 import os
 import sys
-
-sys.path.append(os.path.dirname(__name__))
-
+import cx_Logging
 from app import app
 
-logging.basicConfig(
-    filename = r'flask-service.log',
-    level = logging.DEBUG, 
-    format = '[flaskapp] %(levelname)-7.7s %(message)s'
-)
 
-class HelloFlaskSvc (win32serviceutil.ServiceFramework):
-    _svc_name_ = "FlaskAppTest-cx_Freeze"
-    _svc_display_name_ = "FlaskAppServiceTest-cx_Freeze"
+class Handler:
 
-    def __init__(self, *args):
-        win32serviceutil.ServiceFramework.__init__(self, *args)
-        self.hWaitStop = win32event.CreateEvent(None,0,0,None)
-        socket.setdefaulttimeout(5)
-        self.stop_requested = False
+    # no parameters are permitted; all configuration should be placed in the
+    # configuration file and handled in the Initialize() method
+    def __init__(self):
+        self.stopEvent = threading.Event()
+        self.stopRequestedEvent = threading.Event()
 
-    def SvcStop(self):
-        self.ReportServiceStatus(win32service.SERVICE_STOP_PENDING)
-        win32event.SetEvent(self.hWaitStop)
-        self.ReportServiceStatus(win32service.SERVICE_STOPPED)
-        logging.info('Stopped service ...')
-        self.stop_requested = True
+    # called when the service is starting
+    def initialize(self, configFileName):
+        self.directory = os.path.dirname(sys.executable)
+        cx_Logging.StartLogging(os.path.join(self.directory, "teste.log"), cx_Logging.DEBUG)
+        #pass
 
-    def SvcDoRun(self):
-        servicemanager.LogMsg(
-            servicemanager.EVENTLOG_INFORMATION_TYPE,
-            servicemanager.PYS_SERVICE_STARTED,
-            (self._svc_name_,'')
-        )
+    # called when the service is starting immediately after Initialize()
+    # use this to perform the work of the service; don't forget to set or check
+    # for the stop event or the service GUI will not respond to requests to
+    # stop the service
+    def run(self):
+        cx_Logging.Debug("stdout=%r", sys.stdout)
+        sys.stdout = open(os.path.join(self.directory, "stdout.log"), "a")
+        sys.stderr = open(os.path.join(self.directory, "stderr.log"), "a")
+        app.run(host="0.0.0.0")
+        self.stopRequestedEvent.wait()
+        self.stopEvent.set()
 
-        self.main()
-
-    def main(self):
-        app.run(host="127.0.0.1", port=8000)
-
-if __name__ == '__main__':
-    if len(sys.argv) == 1:
-        servicemanager.Initialize()
-        servicemanager.PrepareToHostSingle(HelloFlaskSvc)
-        servicemanager.StartServiceCtrlDispatcher()
-    else:
-        win32serviceutil.HandleCommandLine(HelloFlaskSvc)
-
+    # called when the service is being stopped by the service manager GUI
+    def stop(self):
+        self.stopRequestedEvent.set()
+        self.stopEvent.wait()

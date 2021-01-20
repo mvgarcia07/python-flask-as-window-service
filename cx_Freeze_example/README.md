@@ -1,5 +1,5 @@
 # python-flask-as-window-service using cx_freeze
-These are the steps to create a flask applications as window services in windows 10 and python 3.8 uning pyinstaller
+These are the steps to create a flask applications as window services in windows 10 and python 3.8 uning cx_freeze
 
 Based on [https://github.com/marcelotduarte/cx_Freeze/tree/master/cx_Freeze/samples/service]
 
@@ -31,20 +31,48 @@ or
 pip whell install cx_Logging-2.2-cp38-cp38-win_amd64.whl
 ```
 
-# OPTION 1: Compile the application as window service executable
-The following commannd will generate a .exe in  buils directory
+# OPTION 1: Compile the application as window service executable 
+
+The following commannd will generate a .exe in  'build' directory
 ```sh
 python setup.py build
 ```
 
-## Test the .exe  
+## install the .exe  
+Open a powershell with admin priviliges 
 ```sh
 cd build\exe.win-amd64-3.8\
-.\cx_Freeze_Flask_Service.exe debug
+.\Flask_Service.exe --install test
+```
+or to uninstall
+```sh
+.\Flask_Service.exe --uninstall test
+```
+## Test the .exe  
+Check in browser http://localhost:5000/ to find the "hellow world" 
+
+## Start the application Manually
+Now, open the “Services” msc snap in
+```sh
+mmc Services.msc
 ```
 
-# OPTION 2: Compile the application as window console executable
-The following commannd will generate a .exe in  buils directory
+Look for the service names  "FlaskServicetest" and run it manually
+
+# Verify is working 
+Check in browser http://localhost:5000/ to find the hellow world 
+
+## The logs
+For errors go to the 'build' directory 
+```sh
+stderr.log
+teste.log
+stdout.log
+```
+
+
+# OPTION 2: Compile the application as window console executable using win32
+The following commannd will generate a .exe in  build directory
 ```sh
 python setup_console.py build
 ```
@@ -59,18 +87,5 @@ Check in browser http://localhost:8000/ to find the "hellow world"
 
 Ctrl C to kill the application, close the terminal windows because it kept running
 
-# Install the application
-Open a new powershell with **admin priviliges** 
-```sh
-.\cx_Freeze_Flask_Service.exe install
-```
-# Start the application
-Now, open the “Services” msc snap in
-```sh
-mmc Services.msc
-```
 
-Look for the service names  "FlaskAppTest" and run it manually
 
-# Verify is working 
-Check in browser http://localhost:8000/ to find the hellow world 
