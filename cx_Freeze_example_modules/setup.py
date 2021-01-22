@@ -10,10 +10,12 @@ using different configuration files.
 """
 
 from cx_Freeze import setup, Executable
+import sys
 
 options = {
     "build_exe": {
         "includes": ["ServiceHandler","cx_Logging"],
+        "path": sys.path,
         "excludes": ["tkinter"],
     }
 }

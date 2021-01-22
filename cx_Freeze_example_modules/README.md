@@ -45,11 +45,11 @@ python setup.py build
 Open a powershell with admin priviliges 
 ```sh
 cd build\exe.win-amd64-3.8\
-.\Flask_Service.exe --install test
+.\FlaskService_modules.exe --install test
 ```
 or to uninstall
 ```sh
-.\Flask_Service.exe --uninstall test
+.\FlaskService_modules.exe --uninstall test
 ```
 ## Test the .exe  
-Check in browser http://127.0.0.1:5123/api/v1/hello to find the "hellow world" 
+Check in browser http://127.0.0.1:5123/api/v1/hello to find the "hello from Portugal" 
