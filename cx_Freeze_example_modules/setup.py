@@ -14,9 +14,10 @@ import sys
 
 options = {
     "build_exe": {
-        "includes": ["ServiceHandler","cx_Logging"],
-        "path": sys.path,
+        "includes": ["ServiceHandler","cx_Logging","jinja2.ext"],
         "excludes": ["tkinter"],
+         "packages": ["app"],
+         "path": sys.path,
     }
 }
 
@@ -25,6 +26,12 @@ executables = [
         "Configws.py",
         base="Win32Service",
         target_name="FlaskService_modules.exe",
+    ),
+    
+    Executable(
+        "init.py",
+        base="Console",
+        target_name="FlaskService_modules_console.exe",
     )
 ]
 

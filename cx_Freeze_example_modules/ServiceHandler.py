@@ -46,6 +46,3 @@ class Handler:
     def stop(self):
         self.stopRequestedEvent.set()
         self.stopEvent.wait()
-
-if __name__ == "__main__":
-    app.run(host="127.0.0.1",port=5123)
