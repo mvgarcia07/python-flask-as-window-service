@@ -1,4 +1,4 @@
-# API Template with modules to deploy as window service using cx_freeze
+# API Template with modules to deploy as window service using cx_freeze 
 Flask application with modules that give Portugal time as output
 
 These are the steps to create a flask applications as window services in windows 10 and python 3.8 uning cx_freeze
@@ -32,16 +32,21 @@ or
 ```sh
 pip whell install cx_Logging-2.2-cp38-cp38-win_amd64.whl
 ```
-
-
-# OPTION 1: Compile the application as window service executable 
+# Build the application
 The following commannd will generate a .exe in  'build' directory
 
 ```sh
 python setup.py build
 ```
+## OPTION 1: run the application as console
+```sh
+cd build\exe.win-amd64-3.8\
+.\FlaskService_modules_console.exe
+```
+## OPTION 2: run the application as window service executable 
+#### UPDATE JAN 2021 It is having issues starting the services with error 1053 
 
-## install the .exe  
+### install the .exe  
 Open a powershell with admin priviliges 
 ```sh
 cd build\exe.win-amd64-3.8\
@@ -51,5 +56,5 @@ or to uninstall
 ```sh
 .\FlaskService_modules.exe --uninstall test
 ```
-## Test the .exe  
+# Test the .exe  
 Check in browser http://127.0.0.1:5123/api/v1/hello to find the "hello from Portugal" 
